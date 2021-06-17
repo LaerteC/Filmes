@@ -4,7 +4,7 @@ import java.util.List;
 
 import dao.DaoFactory;
 import dao.FilmeDao;
-import dao.implementacao.EM;
+import dao.Transaction;
 import dominio.Filme;
 
 public class FilmeServico {
@@ -20,18 +20,39 @@ public class FilmeServico {
 	
 	public void inserirAtualizar(Filme x) {
 		
-		EM.getLocalEm().getTransaction().begin();
+		try {
+			
+			Transaction.begin();
+			
+			dao.inserirAtualizar(x);
+			
+			Transaction.commit();
+			
+		}catch(RuntimeException e) {
+			
+			if(Transaction.isActive()) {
+				
+				Transaction.rollBack();
+			}
+		}
 		
-		dao.inserirAtualizar(x);
 		
-		EM.getLocalEm().getTransaction().commit();
 	}
 	
 	public void excluir(Filme x) {
 		
-		EM.getLocalEm().getTransaction().begin();
-		dao.excluir(x);
-		EM.getLocalEm().getTransaction().commit();
+		try {
+			Transaction.begin();
+			dao.excluir(x);
+			Transaction.commit();
+		}catch(RuntimeException e) {
+			
+			if(Transaction.isActive()) {
+				
+				Transaction.rollBack();
+			}
+		}
+		
 		
 	}
 	

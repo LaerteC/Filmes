@@ -4,44 +4,74 @@ import java.util.List;
 
 import dao.DaoFactory;
 import dao.ParticipacaoDao;
-import dao.implementacao.EM;
+import dao.Transaction;
 import dominio.Participacao;
 
 public class ParticipacaoServico {
-	
+
 	private ParticipacaoDao dao;
-	
+
 	public ParticipacaoServico() {
-		
+
 		dao = DaoFactory.criarParticipacaoDap();
-		
+
 	}
-	
+
 	public void inserirAtualizar(Participacao x) {
+
+		try {
+			Transaction.begin();
+
+			dao.inserirAtualizar(x);
+
+			Transaction.commit();
+			
+		}catch(RuntimeException e) {
+			
+			if(Transaction.isActive()) {
+				
+				Transaction.rollBack();
+			}
+			
+			System.out.println(" Error "+ e.getMessage());
+		}
 		
-		EM.getLocalEm().getTransaction().begin();
-		
-		dao.inserirAtualizar(x);
-		EM.getLocalEm().getTransaction().commit();
-		
+
 	}
-	
+
 	public void excluir(Participacao x) {
+
+		try {
+			
+			Transaction.begin();
+
+			dao.excluir(x);
+
+			Transaction.commit();
+			
+		}catch(RuntimeException e) {
+			
+			if(Transaction.isActive()) {
+				
+				Transaction.rollBack();
+				
+			}
+			
+			System.out.println(" Error "+ e.getMessage());
+			
+		}
 		
-		EM.getLocalEm().getTransaction().begin();
-		dao.excluir(x);
-		EM.getLocalEm().getTransaction().commit();
-		
+
 	}
-	
+
 	public Participacao buscar(int cod) {
-		
+
 		return dao.buscar(cod);
-		
+
 	}
-	
-	public List<Participacao> buscarTodos(){
-		
+
+	public List<Participacao> buscarTodos() {
+
 		return dao.buscarTodos();
 	}
 
