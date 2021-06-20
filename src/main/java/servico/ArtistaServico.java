@@ -12,27 +12,34 @@ public class ArtistaServico {
 	private ArtistaDao dao;
 
 	public ArtistaServico() {
-		
+
 		dao = DaoFactory.criarArtistaDao();
-		
+
 	}
 
-	public void inserirAtualizar(Artista x) {
+	public void inserirAtualizar(Artista x) throws ServicoException {
 
 		try {
-		Transaction.begin();
 
-		dao.inserirAtualizar(x);
+			Artista temporario = dao.buscaNomeExato(x.getNome());
 
-		Transaction.commit();
-		
-		}catch(RuntimeException e) {
-			
-			if(Transaction.isActive()) {
-				
+			if (temporario != null) {
+				throw new ServicoException("Já existe um Artista com esse Nome", 1);
+			}
+
+			Transaction.begin();
+
+			dao.inserirAtualizar(x);
+
+			Transaction.commit();
+
+		} catch (RuntimeException e) {
+
+			if (Transaction.isActive()) {
+
 				Transaction.rollBack();
 			}
-			
+
 		}
 
 	}
@@ -40,19 +47,19 @@ public class ArtistaServico {
 	public void excluir(Artista x) {
 
 		try {
-		Transaction.begin();
+			Transaction.begin();
 
-		dao.excluir(x);
+			dao.excluir(x);
 
-		Transaction.commit();
-		
-		}catch(RuntimeException e) {
-			
-			if(Transaction.isActive()) {
-				
+			Transaction.commit();
+
+		} catch (RuntimeException e) {
+
+			if (Transaction.isActive()) {
+
 				Transaction.rollBack();
 			}
-			
+
 		}
 
 	}
@@ -67,6 +74,11 @@ public class ArtistaServico {
 
 		return dao.buscarTodos();
 
+	}
+
+	public List<Artista> buscarTodosOrdenadoPorNome() {
+
+		return dao.buscarTodosOrdenadoPorNome();
 	}
 
 }

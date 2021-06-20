@@ -17,6 +17,7 @@ import dominio.Participacao;
 import servico.ArtistaServico;
 import servico.FilmeServico;
 import servico.ParticipacaoServico;
+import servico.ServicoException;
 
 /**
  * Servlet implementation class Instanciacao
@@ -49,6 +50,8 @@ public class Instanciacao extends HttpServlet {
 					sdf.parse("14/05/1973"));
 
 			Artista a3 = new Artista(null, "Kate Winslett", "UK", new BigDecimal("800.00"), sdf.parse("05/10/1975"));
+			
+			
 
 			Participacao p1 = new Participacao(null, "Jack Dawson", new BigDecimal("2000.00"), f2, a1);
 
@@ -57,31 +60,27 @@ public class Instanciacao extends HttpServlet {
 			Participacao p3 = new Participacao(null, "Rose Bukater", new BigDecimal("1000.00"), f2, a3);
 
 			ArtistaServico as = new ArtistaServico();
-			
-			FilmeServico fs  = new FilmeServico();
-			
+
+			FilmeServico fs = new FilmeServico();
+
 			ParticipacaoServico ps = new ParticipacaoServico();
-				
+
 			fs.inserirAtualizar(f1);
 			fs.inserirAtualizar(f2);
-			
+
 			as.inserirAtualizar(a1);
 			as.inserirAtualizar(a2);
 			as.inserirAtualizar(a3);
-			
+
 			ps.inserirAtualizar(p1);
 			ps.inserirAtualizar(p2);
 			ps.inserirAtualizar(p3);
-			
-			
-			
-	
-			
-			
-			
 
 			response.getWriter().append(" Laerte Está Aprendendo a porra toda!!!!  ");
 
+		}catch(ServicoException e) {
+			
+			response.getWriter().append(" Erro ao Adicionar o nome " + e.getMessage());
 		} catch (ParseException e) {
 
 			response.getWriter().append(" Erro ao Instanciar Data !!!");
