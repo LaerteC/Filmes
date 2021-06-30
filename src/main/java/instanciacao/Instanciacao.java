@@ -68,13 +68,13 @@ public class Instanciacao extends HttpServlet {
 			fs.inserirAtualizar(f1);
 			fs.inserirAtualizar(f2);
 
-			as.inserirAtualizar(a1);
-			as.inserirAtualizar(a2);
-			as.inserirAtualizar(a3);
+			as.inserir(a1);
+			as.inserir(a2);
+			as.inserir(a3);
 
-			ps.inserirAtualizar(p1);
-			ps.inserirAtualizar(p2);
-			ps.inserirAtualizar(p3);
+			ps.inserir(p1);
+			ps.inserir(p2);
+			ps.inserir(p3);
 
 			response.getWriter().append(" Laerte Está Aprendendo a porra toda!!!!  ");
 

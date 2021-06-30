@@ -17,7 +17,7 @@ public class ArtistaServico {
 
 	}
 
-	public void inserirAtualizar(Artista x) throws ServicoException {
+	public void inserir(Artista x) throws ServicoException {
 
 		try {
 
@@ -44,9 +44,41 @@ public class ArtistaServico {
 
 	}
 
-	public void excluir(Artista x) {
+	public void atualizar(Artista x) {
 
 		try {
+
+			Artista temp = dao.buscaNomeExatoDiferente(x.getCodArtista(), x.getNome());
+
+			if (temp != null) {
+
+				throw new ServicoException(" Ja existe um artista com esse Nome", 1);
+			}
+
+			Transaction.begin();
+			dao.inserirAtualizar(x);
+			Transaction.commit();
+		} catch (Exception e) {
+
+			if (Transaction.isActive()) {
+
+				Transaction.rollBack();
+
+			}
+
+		}
+	}
+
+	public void excluir(Artista x) throws ServicoException {
+
+		try {
+			x = dao.buscar(x.getCodArtista());
+
+			if (!x.getParticipacoes().isEmpty()) {
+
+				throw new ServicoException(" Artista possui Participações", 2);
+			}
+
 			Transaction.begin();
 
 			dao.excluir(x);
@@ -79,6 +111,11 @@ public class ArtistaServico {
 	public List<Artista> buscarTodosOrdenadoPorNome() {
 
 		return dao.buscarTodosOrdenadoPorNome();
+	}
+
+	public List<Artista> buscarPorNome(String trecho) {
+
+		return dao.buscarPorNome(trecho);
 	}
 
 }

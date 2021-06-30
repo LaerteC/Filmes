@@ -18,4 +18,8 @@ public interface ArtistaDao {
 
 	public Artista buscaNomeExato(String nome);
 
+	public List<Artista> buscarPorNome(String trecho);
+
+	public Artista buscaNomeExatoDiferente(Integer codigo, String nome);
+
 }

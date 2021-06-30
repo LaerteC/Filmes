@@ -11,5 +11,7 @@ public interface FilmeDao {
 	public Filme buscar(int cod);
 	public List<Filme> buscarTodos();
 	
+	public List<Filme> buscarPorNomeAno(String nome, int anoMin, int anoMax);
+	
 
 }

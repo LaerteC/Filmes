@@ -17,7 +17,14 @@ public class ParticipacaoServico {
 
 	}
 
-	public void inserirAtualizar(Participacao x) {
+	public void atualizar(Participacao x) throws ServicoException {
+		
+		Participacao aux = dao.buscarExatoDiferente(x.getCodParticipacao(),x.getPersonagem(),x.getArtista(),x.getFilme());
+		
+		if(aux != null) {
+			
+			throw new ServicoException(" Erro, ao Atualizar !!!"+x.getArtista().getNome(),2);
+		}
 
 		try {
 			Transaction.begin();
@@ -25,42 +32,67 @@ public class ParticipacaoServico {
 			dao.inserirAtualizar(x);
 
 			Transaction.commit();
+
+		} catch (RuntimeException e) {
+
+			if (Transaction.isActive()) {
+
+				Transaction.rollBack();
+			}
+
+			System.out.println(" Error " + e.getMessage());
+		}
+
+	}
+
+	public void inserir(Participacao x) throws ServicoException {
+		
+		Participacao auxiliar = dao.buscarExato(x.getPersonagem(),x.getArtista(),x.getFilme());
+		
+		if(auxiliar != null) {
 			
-		}catch(RuntimeException e) {
+			throw new ServicoException(" Já existe esse Personagem para esse Artista "+x.getArtista().getNome(),1);
+		}
+
+		try {
+			Transaction.begin();
 			
-			if(Transaction.isActive()) {
+			dao.inserirAtualizar(x);
+			
+			Transaction.commit();
+			
+		} catch (RuntimeException e) {
+
+			if (Transaction.isActive()) {
 				
 				Transaction.rollBack();
 			}
-			
-			System.out.println(" Error "+ e.getMessage());
-		}
-		
 
+			System.out.println(" Error " + e.getMessage());
+		}
 	}
 
 	public void excluir(Participacao x) {
 
 		try {
-			
+
 			Transaction.begin();
 
 			dao.excluir(x);
 
 			Transaction.commit();
-			
-		}catch(RuntimeException e) {
-			
-			if(Transaction.isActive()) {
-				
+
+		} catch (RuntimeException e) {
+
+			if (Transaction.isActive()) {
+
 				Transaction.rollBack();
-				
+
 			}
-			
-			System.out.println(" Error "+ e.getMessage());
-			
+
+			System.out.println(" Error " + e.getMessage());
+
 		}
-		
 
 	}
 

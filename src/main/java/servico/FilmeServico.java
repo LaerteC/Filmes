@@ -68,4 +68,11 @@ public class FilmeServico {
 		return dao.buscarTodos();
 		
 	}
+	
+	public List<Filme> buscarPorNomeAno(String nome, int anoMin, int anoMax){
+		
+		return dao. buscarPorNomeAno(nome,anoMin, anoMax);
+		
+		
+	}
 }
