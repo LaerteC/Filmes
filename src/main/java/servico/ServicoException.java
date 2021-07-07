@@ -9,9 +9,9 @@ public class ServicoException extends Exception {
 	
 	private Integer codigo;
 	
-	public ServicoException(String mensagem,Integer codigo) {
+	public ServicoException(String msg,Integer codigo) {
 		
-		super(mensagem);
+		super(msg);
 		
 		this.codigo=codigo;
 		

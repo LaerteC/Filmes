@@ -39,12 +39,14 @@ public class ArtistaServico {
 
 				Transaction.rollBack();
 			}
+			
+			System.out.println("Erro: " + e.getMessage());
 
 		}
 
 	}
 
-	public void atualizar(Artista x) {
+	public void atualizar(Artista x) throws ServicoException {
 
 		try {
 
@@ -58,13 +60,15 @@ public class ArtistaServico {
 			Transaction.begin();
 			dao.inserirAtualizar(x);
 			Transaction.commit();
-		} catch (Exception e) {
+		} catch (RuntimeException e) {
 
 			if (Transaction.isActive()) {
 
 				Transaction.rollBack();
 
 			}
+			
+			System.out.println("Erro: " + e.getMessage());
 
 		}
 	}
@@ -91,6 +95,8 @@ public class ArtistaServico {
 
 				Transaction.rollBack();
 			}
+			
+			System.out.println("Erro: " + e.getMessage());
 
 		}
 

@@ -47,7 +47,7 @@ public class Artista implements Serializable{
 		this.cache = cache;
 		this.nascimento = nascimento;
 		
-		this.participacoes = new ArrayList<>();
+		participacoes = new ArrayList<>();
 		
 	}
 

@@ -66,6 +66,8 @@ public class ArtistaDaoImpl implements ArtistaDao {
 		Query query = em.createQuery(jpql);
 
 		return query.getResultList();
+		
+		
 
 	}
 
