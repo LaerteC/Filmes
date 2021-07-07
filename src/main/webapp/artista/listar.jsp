@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!doctype html>
 <html lang="pt_br">
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 
 
 <title>Sistema Filmes</title>
@@ -36,7 +36,7 @@
 	<!-- Begin page content -->
 	<main role="main" class="container">
 		<h1 class="mt-5">Artista</h1>
-		<p class="lead">Sistema Did√°tico JAVA-WEB</p>
+		<p class="lead">Sistema Did·tico JAVA-WEB</p>
 
 		<div class="row">
 			<div class="col-sm-2">
@@ -62,12 +62,12 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>C√≥digo</th>
+					<th>CÛdigo</th>
 					<th>Nome</th>
 					<th>Nacionalidade</th>
 					<th>Cache</th>
 					<th>Nascimento</th>
-					<th>A√ß√£o</th>
+					<th>AÁ„o</th>
 				</tr>
 			</thead>
 			<tbody>
