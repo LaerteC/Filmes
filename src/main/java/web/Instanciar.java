@@ -50,8 +50,12 @@ public class Instanciar {
 		
 		s=request.getParameter("cache");
 		if (s != null && !s.isEmpty()) {
+			try {
+				auxiliar.setCache(new BigDecimal(s));
+			}catch(NumberFormatException e) {
+				e.printStackTrace();
+			}
 			
-			auxiliar.setCache(new BigDecimal(s));
 			
 		}
 		
