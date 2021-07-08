@@ -46,7 +46,8 @@
 		<div class="col-sm-offset-2 col-sm-10">
 			<ul>
 				<c:forEach items="${erros}" var="msg">
-					<li class="erro">${msg}</li>
+					<li class="erro"  style="color: #FF0000;
+ font-weight: bold;">${msg}</li>
 				</c:forEach>
 			</ul>
 			
