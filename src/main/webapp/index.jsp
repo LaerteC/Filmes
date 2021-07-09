@@ -32,12 +32,9 @@
 		<jsp:include page="/resources/templates/navbar.jsp"></jsp:include>
 	</header>
 
-	<!-- Begin page content -->
-	<main role="main" class="container">
-		<h1 class="mt-5">Página Inicial !!!</h1>
-		<p class="lead">Sistema Didático JAVA-WEB Laerteeee</p>
-
-	</main>
+	<div>
+	</div>
+	
 
 	<jsp:include page="/resources/templates/footer.jsp"></jsp:include>
 

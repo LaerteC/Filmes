@@ -7,7 +7,7 @@
 
 		<li><a href="<%=request.getContextPath()%>/artista/listar">Cadastro
 				de Artistas</a></li>
-		<li><a href="<%=request.getContextPath()%>/filmes/pesquisar">Pesquisar
+		<li><a href="<%=request.getContextPath()%>/filme/pesquisar">Pesquisar
 				Filmes</a></li>
 
 		<li><a href="<%=request.getContextPath()%>/participacao/filmes">Inserir

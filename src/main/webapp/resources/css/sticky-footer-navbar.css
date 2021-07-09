@@ -43,3 +43,10 @@ code {
  color: #FF0000;
  font-weight: bold;
 }
+
+header{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}

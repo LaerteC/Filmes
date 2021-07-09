@@ -2,42 +2,30 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
-<!doctype html>
-<html lang="pt_br">
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="ISO-8859-1">
-
-
-<title>Sistema Filmes</title>
-
-<link rel="canonical"
-	href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/">
-
-<!-- Bootstrap core CSS -->
+<title>Sistema de Filmes</title>
 <link
 	href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css"
 	rel="stylesheet">
-
 <link
 	href="<%=request.getContextPath()%>/resources/css/sticky-footer-navbar.css"
 	rel="stylesheet">
-
 </head>
 
 <body>
 
-	<header>
-		<!-- Fixed navbar -->
-		<jsp:include page="/resources/templates/navbar.jsp"></jsp:include>
-	</header>
+	<jsp:include page="/resources/templates/navbar.jsp" />
+
 
 	<!-- Begin page content -->
-	<main role="main" class="container">
-		<h2 class="mt-5"> Inserir Novo Artista </h2>
+	
+		<h2 class="mt-5" style="margin-left:100px;"> Inserir Novo Artista </h2>
 		
 
-	</main>
+
 	
 		
 	<form method="post" name="myform" class="form-horizontal" action="<%=request.getContextPath()%>/artista/inserir">
@@ -47,7 +35,7 @@
 			<ul>
 				<c:forEach items="${erros}" var="msg">
 					<li class="erro"  style="color: #FF0000;
- font-weight: bold;">${msg}</li>
+ 						font-weight: bold;">${msg}</li>
 				</c:forEach>
 			</ul>
 			
@@ -95,7 +83,7 @@
 		  	<div class="col-sm-offset-2" col-sm-10">
 		  		<button  type="submit"  class="btn btn-primary"> Inserir 
 		  		</button>
-		  		<a href="<%=request.getContextPath()%>/artista/listar"  class="btn btn-default"> Voltar :</a>
+		  		<a href="<%=request.getContextPath()%>/artista/listar"  class="btn btn-default"> Voltar </a>
 		  	</div>
 		</div>
 		

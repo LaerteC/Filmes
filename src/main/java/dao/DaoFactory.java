@@ -18,7 +18,7 @@ public class DaoFactory {
 		
 	}
 	
-	public static ParticipacaoDao criarParticipacaoDap() {
+	public static ParticipacaoDao criarParticipacaoDao() {
 		
 		return new ParticipacaoDaoImpl();
 		

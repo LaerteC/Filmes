@@ -1,0 +1,38 @@
+
+header{
+    width: 100%;
+    height: 100vh;
+    
+    position: relative;
+}
+
+.banner{
+    position:absolute;
+    top:40%;
+    left:9%;
+    
+}
+
+.banner h1{
+    color:rgb(210, 204, 211);
+    font-size: 3.2rem;
+   
+    font-weight: 185;
+    
+    margin-bottom: 3rem;
+ 
+    animation: moveBanner 2s forwards;
+    
+
+}   
+.banner p{
+
+    color:rgb(253, 247, 247);
+    font-size: 1.6rem;
+    
+    margin-bottom: 2rem;
+   
+    animation: moveBanner 2s forwards;
+
+
+}  
